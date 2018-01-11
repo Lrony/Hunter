@@ -1,25 +1,27 @@
 package com.example.hunter.mode;
 
-public class About {
+import cn.bmob.v3.BmobObject;
 
-    private int id;
+public class HunterAbout extends BmobObject {
+
+    private Integer id;
     private String title;
     private String url;
 
-    public About() {
+    public HunterAbout() {
     }
 
-    public About(int id, String title, String url) {
+    public HunterAbout(Integer id, String title, String url) {
         this.id = id;
         this.title = title;
         this.url = url;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

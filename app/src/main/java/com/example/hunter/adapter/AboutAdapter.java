@@ -8,18 +8,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.hunter.R;
-import com.example.hunter.mode.About;
+import com.example.hunter.mode.HunterAbout;
 
 import java.util.ArrayList;
 
 public class AboutAdapter extends RecyclerView.Adapter<AboutAdapter.ViewHolder> implements View.OnClickListener {
 
     private Context context;
-    private ArrayList<About> abouts = new ArrayList<About>();
+    private ArrayList<HunterAbout> abouts = new ArrayList<HunterAbout>();
 
     private OnItemClickListener mOnItemClickListener = null;
 
-    public AboutAdapter(Context context, ArrayList<About> abouts) {
+    public AboutAdapter(Context context, ArrayList<HunterAbout> abouts) {
         this.context = context;
         this.abouts = abouts;
     }

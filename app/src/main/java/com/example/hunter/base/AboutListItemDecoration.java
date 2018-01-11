@@ -20,6 +20,9 @@ public class AboutListItemDecoration extends RecyclerView.ItemDecoration {
         } else {
             outRect.top = itemDecoration;
         }
+        if (state.getItemCount() - 1 == position) {
+            outRect.bottom = itemDecoration * 2;
+        }
         outRect.left = itemDecoration;
         outRect.right = itemDecoration;
     }

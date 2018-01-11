@@ -259,8 +259,8 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                 }
                 break;
             case R.id.menu_more:
-//                startActivity(new Intent(this, AboutActivity.class));
-                testAddData();
+                startActivity(new Intent(this, AboutActivity.class));
+//                testAddData();
                 break;
         }
         return true;
