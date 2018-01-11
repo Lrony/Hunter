@@ -53,7 +53,7 @@ public class MainListAdapter extends RecyclerView.Adapter<MainListAdapter.ViewHo
         Log.i(TAG, "onBindViewHolder: id = " + id.intValue() + " title = " + title + " image = " + image);
 
         if (title == null || title.length() <= 0) {
-            holder.textView.setText(DateUtils.getInstance().getNowDateFormat());
+            holder.textView.setText(DateUtils.getInstance().getNowDate());
         } else {
             holder.textView.setText(title);
         }

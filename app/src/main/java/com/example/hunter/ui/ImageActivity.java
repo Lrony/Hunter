@@ -3,6 +3,7 @@ package com.example.hunter.ui;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
@@ -27,6 +28,7 @@ import com.example.hunter.R;
 import com.example.hunter.base.BaseActivity;
 import com.example.hunter.base.GlideApp;
 import com.example.hunter.mode.HunterFile;
+import com.example.hunter.utils.DateUtils;
 
 import java.io.File;
 
@@ -37,6 +39,8 @@ import uk.co.senab.photoview.PhotoView;
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ImageActivity extends BaseActivity {
+
+    private static final String TAG = "ImageActivity";
 
     private Toolbar mToolbar;
     private PhotoView mImageView;
@@ -148,7 +152,7 @@ public class ImageActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.menu_save:
-                String fileName = mTitle + ".png";
+                String fileName = DateUtils.getInstance().getNowDateFormat("yyyyMMddHHmmss") + ".png";
                 HunterFile hunterFile = new HunterFile(fileName, "", mImage);
                 downloadFile(hunterFile);
                 break;
@@ -156,10 +160,11 @@ public class ImageActivity extends BaseActivity {
         return true;
     }
 
-    private void downloadFile(BmobFile file){
+    private void downloadFile(final BmobFile file) {
         //允许设置下载文件的存储路径，默认下载文件的目录为：context.getApplicationContext().getCacheDir()+"/bmob/"
-        File saveFile = new File(Environment.getExternalStorageDirectory(), file.getFilename());
-        file.download(saveFile, new DownloadFileListener() {
+        final File saveFile = new File(getApplicationContext().getCacheDir() + "/hunter/", file.getFilename());
+        Log.d(TAG, "downloadFile: " + file.getFilename());
+        file.download(new DownloadFileListener() {
 
             @Override
             public void onStart() {
@@ -167,25 +172,29 @@ public class ImageActivity extends BaseActivity {
             }
 
             @Override
-            public void done(String savePath,BmobException e) {
-                if(e==null){
-                    showToast("下载成功,保存路径:"+savePath);
-                }else{
-                    showToast("下载失败："+e.getErrorCode()+","+e.getMessage());
+            public void done(String savePath, BmobException e) {
+                if (e == null) {
+                    showToast("下载成功,保存路径:" + savePath);
+
+                    Uri uri = Uri.fromFile(saveFile);
+                    sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+                } else {
+                    Log.d(TAG, "done: " + e.getErrorCode() + "," + e.getMessage());
+                    showToast("下载失败：" + e.getErrorCode() + "," + e.getMessage());
                 }
             }
 
             @Override
             public void onProgress(Integer value, long newworkSpeed) {
-                Log.i("bmob","下载进度："+value+","+newworkSpeed);
+                Log.i(TAG, "下载进度：" + value + "," + newworkSpeed);
             }
 
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.image, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.image, menu);
+//        return true;
+//    }
 }
