@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/menu_more"
-        android:icon="@drawable/icon_set"
-        android:title="@string/menu_more"
-        app:showAsAction="always" />
+    <!--<item-->
+        <!--android:id="@+id/menu_more"-->
+        <!--android:icon="@drawable/icon_set"-->
+        <!--android:title="@string/menu_more"-->
+        <!--app:showAsAction="always" />-->
 
     <item
         android:id="@+id/menu_user"
