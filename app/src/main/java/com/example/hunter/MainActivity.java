@@ -93,7 +93,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
     protected void onResume() {
         super.onResume();
         if (!checkLogin()) {
-            Log.d(TAG, "onResume: checkLogin = false");
             mHandler.sendEmptyMessage(MSG_TOOLBAR_OFFLIN);
             if (misInitData && mData != null) {
                 misInitData = false;
@@ -119,8 +118,10 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
     private boolean checkLogin() {
         mHunterUser = BmobUser.getCurrentUser(HunterUser.class);
         if (mHunterUser == null) {
+            Log.d(TAG, "checkLogin: false");
             return false;
         }
+        Log.d(TAG, "checkLogin: true");
         return true;
     }
 
@@ -169,6 +170,7 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                                 HunterData hunterData = new HunterData(id, status, user, title, image);
                                 mHunterDatas.add(hunterData);
                                 mAdapter.notifyDataSetChanged();
+                                mRecycler.smoothScrollToPosition(mHunterDatas.size());
                             } else {
                                 Log.d(TAG, "onDataChange: user error :" + mHunterUser.getUsername());
                             }
@@ -199,12 +201,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                 }
             }
         });
-
-//        // Normal
-//        HunterData Hunter1 = new HunterData(1, 0, "", "状态截图 2018-01-09 16:57:25"
-//                , "http://img.hb.aicdn.com/b775abf28f82262dd5b982322a3be1a1d" +
-//                "bfe6d3a7493d-xKv3BJ_fw658");
-//        mHunter.add(Hunter1);
     }
 
     /**

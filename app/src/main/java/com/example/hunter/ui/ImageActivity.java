@@ -161,7 +161,6 @@ public class ImageActivity extends BaseActivity {
     }
 
     private void downloadFile(final BmobFile file) {
-        //允许设置下载文件的存储路径，默认下载文件的目录为：context.getApplicationContext().getCacheDir()+"/bmob/"
         final File saveFile = new File(getApplicationContext().getCacheDir() + "/hunter/", file.getFilename());
         Log.d(TAG, "downloadFile: " + file.getFilename());
         file.download(new DownloadFileListener() {
