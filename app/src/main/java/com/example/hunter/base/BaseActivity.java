@@ -22,7 +22,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void initServer() {
-        Bmob.initialize(this, "b61d3294ee4e3d815eac6558596ce0c3","Bmob");
+        Bmob.initialize(this, "you appkey","Bmob");
     }
 
     @Override
