@@ -268,7 +268,6 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
 
     private void testAddData() {
         HunterData hunterData = new HunterData();
-        //注意：不能调用gameScore.setObjectId("")方法
         hunterData.setImage("http://img.hb.aicdn.com/b775abf28f82262dd5b982322a3be" +
                 "1a1dbfe6d3a7493d-xKv3BJ_fw658");
         hunterData.setStatus(0);
@@ -333,6 +332,9 @@ public class MainActivity extends BaseActivity implements SwipeRefreshLayout.OnR
                         mHunterDatas.add(hunterData);
                     }
                     Log.d(TAG, "done: " + mHunterDatas.size());
+                    if (mHunterDatas.size() <= 0) {
+                        showToast("空空如也");
+                    }
                 } else {
                     Log.d(TAG, "失败：" + e.getMessage() + "," + e.getErrorCode());
                 }
