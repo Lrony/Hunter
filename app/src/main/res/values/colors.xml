@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="app_backgrund">#f4f4f4</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="hunter_item_status_normal">#55000000</color>
+    <color name="hunter_item_status_end">#770000ff</color>
+    <color name="hunter_item_status_error">#77ff0000</color>
+</resources>
