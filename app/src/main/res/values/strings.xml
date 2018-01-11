@@ -7,6 +7,7 @@
     <string name="menu_image_save">保存图像</string>
 
     <string name="action_tile_login">登陆</string>
+    <string name="action_tile_register">注册</string>
     <string name="action_tile_image">实时图像</string>
     <string name="action_tile_user">用户中心</string>
 
@@ -14,10 +15,18 @@
     <string name="prompt_email">用户名</string>
     <string name="prompt_password">密码</string>
     <string name="action_sign_in">登 陆</string>
-    <string name="action_sign_in_short">登陆</string>
     <string name="error_invalid_email">用户名格式有误</string>
     <string name="error_incorrect_password">密码不符合规则</string>
     <string name="error_field_required">请填写用户名</string>
+
+    <string name="reg_success">注册成功</string>
+    <string name="reg_register_in">注 册</string>
+    <string name="reg_register">注册</string>
+    <string name="reg_email">邮箱</string>
+    <string name="reg_username">用户名</string>
+    <string name="reg_password">密码</string>
+    <string name="reg_error_invalid_email">邮箱格式错误</string>
+    <string name="reg_error_empty_email">邮箱为空</string>
 
     <string name="login_success">登陆成功</string>
     <string name="login_exit">退出成功</string>

@@ -73,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/prompt_password"
                         android:imeActionId="6"
-                        android:imeActionLabel="@string/action_sign_in_short"
+                        android:imeActionLabel="@string/action_sign_in"
                         android:imeOptions="actionUnspecified"
                         android:inputType="textPassword"
                         android:maxLines="1"
@@ -94,7 +94,7 @@
                     android:id="@+id/btn_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="register" />
+                    android:text="@string/reg_register_in" />
 
             </LinearLayout>
         </ScrollView>

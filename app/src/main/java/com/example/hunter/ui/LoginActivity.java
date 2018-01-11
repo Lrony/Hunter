@@ -57,16 +57,6 @@ public class LoginActivity extends BaseActivity {
     private void initView() {
         mUsernamelView = (AutoCompleteTextView) findViewById(R.id.username);
         mPasswordView = (EditText) findViewById(R.id.password);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.btn_sign);
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +74,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                finish();
             }
         });
     }
@@ -114,7 +105,7 @@ public class LoginActivity extends BaseActivity {
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password) || !isPasswordValid(password)) {
+        if (TextUtils.isEmpty(password) || !StringUtils.getInstance().isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_incorrect_password));
             focusView = mPasswordView;
             cancel = true;
@@ -125,7 +116,7 @@ public class LoginActivity extends BaseActivity {
             mUsernamelView.setError(getString(R.string.error_field_required));
             focusView = mUsernamelView;
             cancel = true;
-        } else if (!isEmailValid(username)) {
+        } else if (!StringUtils.getInstance().isUsernamaeValid(username)) {
             mUsernamelView.setError(getString(R.string.error_invalid_email));
             focusView = mUsernamelView;
             cancel = true;
@@ -161,14 +152,6 @@ public class LoginActivity extends BaseActivity {
                 }
             });
         }
-    }
-
-    private boolean isPasswordValid(String password) {
-        return password.length() > 4;
-    }
-
-    private boolean isEmailValid(String username) {
-        return StringUtils.getInstance().isNumeric(username);
     }
 
     /**
